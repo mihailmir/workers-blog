@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block work %}
+
+<h2 class="workers">
+    Сотрудники
+</h2>
+<br>
+<br>
+<div class="container ">
+    <div class="row ">
+        {% for i in work%}
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body ">
+                    <p><img src="{{ MEDIA_URL }}{{i.image}} "width="100" height="100"></p>
+                    <p>Имя : {{i.name}}</p>
+                    <p>Фамилия :{{i.surname}}</p>
+
+
+                </div>
+            </div>
+
+        </div>
+        {%endfor%}
+    </div>
+
+</div>
+
+{% endblock %}
