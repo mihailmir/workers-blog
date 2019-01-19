@@ -2,7 +2,7 @@ body {
     background-color:#c0c0c0;
 }
 .footer {
-    position: absolute;
+    position:fixed;
     bottom: 0;
     width: 100%;
     height: 55px;
@@ -13,14 +13,15 @@ body {
     color: white;
     text-align:  center;
 }
-.workers
+.text-head
 {
 text-align:center;
-
+text-color:red;
 }
 .panel-body
 {
-background-color:#ced4ae;
+
+background-color:#000000;
 }
 
 

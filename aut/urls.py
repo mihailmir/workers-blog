@@ -21,5 +21,5 @@ from .views import signup
 
 urlpatterns = [
     path('signup/', signup, name='signup'),
-    path('login/', LoginView.as_view()),
+    path('login/', LoginView.as_view(), name='login'),
 ]

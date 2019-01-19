@@ -2,7 +2,7 @@
 
 
 {% block aut %}
-<h2>Регистрация</h2>
+<h2 class="text-head">Регистрация</h2>
 
 <div class="bg-blue">
     <div class="container-fluid">
@@ -13,7 +13,7 @@
                         <h3 class="text-center text-uppercase"><b>
                             <form method="post">
                                 {% csrf_token %}
-                                {{ form.as_p }}
+                                {{ form.as_p}}
                                 <button type="submit">Отправить</button>
                             </form>
                         </b></h3>

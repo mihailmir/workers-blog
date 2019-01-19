@@ -8,3 +8,10 @@ from django.contrib.auth.decorators import login_required
 def all_workers(request):
     workers = Workers.objects.all()
     return render(request, 'workers_list.html', {'work': workers})
+
+
+def profile(request, id):
+
+    profile = Workers.objects.get(id=id)
+
+    return render(request, 'profile.html', {'profile': profile, 'request': request}, )
