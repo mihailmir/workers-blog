@@ -10,7 +10,7 @@ class Workers(models.Model):
     surname = models.CharField(max_length=50, verbose_name='Фамилия')
     email = models.EmailField()
     image = models.ImageField(default='workers_list/photos/default_user.jpg', upload_to='workers_list/photos',
-                              verbose_name='Фото сотрудника')
+                              verbose_name='Фото сотрудника', null=False)
 
     def __str__(self):
         return str(self.user)

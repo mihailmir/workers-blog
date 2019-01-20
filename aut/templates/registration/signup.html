@@ -4,21 +4,28 @@
 {% block aut %}
 <h2 class="text-head">Регистрация</h2>
 
-<div class="bg-blue">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-4 offset-md-4">
-                <div class="panel panel-body">
-                    <div class="panel-body ">
-                        <h3 class="text-center text-uppercase"><b>
-                            <form method="post">
-                                {% csrf_token %}
-                                {{ form.as_p}}
-                                <button type="submit">Отправить</button>
-                            </form>
-                        </b></h3>
-                    </div>
-                </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="panel panel-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <br>
+                    {%for field in form%}
+                    <p>{{ field.label }}
+                    </p>
+                    <p>{{ field }}</p>
+                    {{field.errors}}
+
+                    {% endfor %}
+                    <p>
+                        <button type="submit">Отправить</button>
+                    </p>
+                    <br>
+                    <br>
+
+                </form>
+                <br>
             </div>
         </div>
     </div>

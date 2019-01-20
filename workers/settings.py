@@ -134,3 +134,9 @@ STATICFILES_DIRS = [
 ]
 
 LOGIN_REDIRECT_URL = '/workers'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "workerstestmail@gmail.com"
+EMAIL_HOST_PASSWORD = "12345123412312"
+EMAIL_USE_TLS = True

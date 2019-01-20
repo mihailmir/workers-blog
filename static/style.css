@@ -1,5 +1,6 @@
 body {
     background-color:#c0c0c0;
+    height: 100%;
 }
 .footer {
     position:fixed;
@@ -20,8 +21,11 @@ text-color:red;
 }
 .panel-body
 {
-
-background-color:#000000;
+background-color:#333333 ;
+}
+.text-align
+{
+  text-align: center;
 }
 
 

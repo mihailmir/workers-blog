@@ -11,7 +11,7 @@ def all_workers(request):
 
 
 def profile(request, id):
-
-    profile = Workers.objects.get(id=id)
-
+    profile = Workers.objects.get(user_id=id)
     return render(request, 'profile.html', {'profile': profile, 'request': request}, )
+
+
