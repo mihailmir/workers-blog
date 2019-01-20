@@ -19,14 +19,12 @@ def signup(request):
             else:
                 user.workers.image = form.cleaned_data.get('image')
             user.save()
-
             send_mail('Регистрация', f'Здравствуйете {user.username} вы успешно зарегестрировались на сайте учета сотрудников.',
                        'workerstestmail@gmail.com', [f'{user.workers.email}'], fail_silently=False)
             my_password = form.cleaned_data.get('password1')
             user = authenticate(username=user.username, password=my_password)
             login(request, user)
             return redirect('/workers')
-
     else:
         form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form})
@@ -34,4 +32,4 @@ def signup(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('/workers')
+    return redirect('/login')

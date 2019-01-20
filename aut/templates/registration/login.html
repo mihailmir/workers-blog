@@ -1,9 +1,6 @@
 {% extends 'base.html' %}
 
-
 {% block login %}
-
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-4 offset-md-4">
@@ -19,7 +16,6 @@
                     <p>{{ field }}</p>
                     {% endfor %}
                     <button type="submit">Вход</button>
-
                 </form>
                 <br>
                 <a href="{% url 'signup' %}">Не зарегестрированы?</a>
@@ -29,6 +25,4 @@
         </div>
     </div>
 </div>
-
-
 {% endblock %}
