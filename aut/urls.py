@@ -18,7 +18,6 @@ from django.urls import path, include
 from .views import signup, logout
 
 
-
 urlpatterns = [
     path('signup/', signup, name='signup'),
     path('login/', LoginView.as_view(), name='login'),
