@@ -8,26 +8,30 @@
         <div class="col-md-4 offset-md-4">
             <br>
             <br>
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <p><img src="{{ MEDIA_URL }}{{profile.image}} " width="100" height="100"></p>
+            <div class="card text-white bg-dark mb-3">
+                <div class="card-header"><p><img src="{{ MEDIA_URL }}{{profile.image}} " width="150" height="150"></p>
+                </div>
+                <div class="card-body">
                     <p>{{profile.user}}</p>
                     <p>{{profile.name}}</p>
                     <p>{{profile.surname}}</p>
                     <p>{{profile.email}}</p>
-                    {% if request.user.id == profile.user_id%}
+                    {%if profile.user_id == request.user.id %}
+
+                    <p><a href="{% url 'edit' %}">
                     <p>
-                        <a href="{% url 'logout'%}">
-                            <button type="button" class="btn btn-secondary">Выйти</button>
-                        </a>
-                    </p>
-                    {%endif%}
-                    </p>
+                        <button type="button" class="btn btn-secondary">Редактировать</button>
+                        </a></p>
+                    <p><a href="{% url 'logout' %}">
+                    <p>
+                        <button type="button" class="btn btn-secondary">Выход</button>
+                        </a></p>
+                    {%endif %}
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
 {%endblock%}
-
-
