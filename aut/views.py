@@ -10,7 +10,8 @@ def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST, request.FILES)
         if form.is_valid():
-            form.image = request.FILES['image']
+
+
             user = form.save()
             user.refresh_from_db()
             user.workers.name = form.cleaned_data.get('first_name')
