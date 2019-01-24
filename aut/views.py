@@ -5,13 +5,10 @@ from .forms import SignUpForm
 from django.core.mail import send_mail
 
 
-
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST, request.FILES)
         if form.is_valid():
-
-
             user = form.save()
             user.refresh_from_db()
             user.workers.name = form.cleaned_data.get('first_name')
