@@ -5,12 +5,12 @@ from django.db.models.signals import post_save
 
 
 class Workers(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='Логин')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='Логин', primary_key=True)
     name = models.CharField(max_length=50, verbose_name='Имя')
     surname = models.CharField(max_length=50, verbose_name='Фамилия')
     email = models.EmailField()
     image = models.ImageField(default='workers_list/photos/default_user.jpg', upload_to='workers_list/photos',
-                              verbose_name='Фото сотрудника', null=False)
+                              verbose_name='Фото сотрудника')
 
     def __str__(self):
         return str(self.user)
