@@ -1,36 +1,42 @@
 {% extends 'base.html' %}
-{% block work %}
-{%block title%}
-<title>Список работников</title>
-{% endblock title%}
-<h2 class="text-head">
-    Сотрудники
-</h2>
-<br>
-<br>
-<div class="container">
-    <div class="row ">
-        <div class="row justify-content-around ">
-        {% for field in work%}
-            <div class="card text-white bg-dark mb-3 ml-1 col-3" >
-                <div class="card-header"><p><img src="{{ MEDIA_URL }}{{field.image}} " width="100" height="100"></p>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title"><p>{{field.name}} {{field.surname}}</p></h5>
-                    <p>{{field.email}}</p>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <p>
-                        <a href="{% url 'id' field.user_id %}">
-                            <button type="button" class="btn btn-secondary">Профиль</button>
-                        </a>
-                    </p>
-                </div>
+
+{% block title %}
+    <title>Список работников</title>
+{% endblock title %}
+
+{% block content %}
+    <h2 class="text-head">
+        Сотрудники
+    </h2>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row ">
+            <div class="row justify-content-around ">
+                {% for field in work %}
+                    <div class="card text-white bg-dark mb-3 ml-1 col-3" >
+                        <div class="card-header">
+                            <p>
+                                <img src="{{ MEDIA_URL }}{{field.image}} " width="100" height="100">
+                            </p>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <p>{{ field.name }} {{ field.surname }}</p>
+                            </h5>
+                            <p>{{ field.email }}</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                card's content.
+                            </p>
+                            <p>
+                                <a href="{% url 'id' field.user_id %}" class="btn btn-secondary" role="button">Редактировать</a>
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
-        {%endfor%}
-            </div>
+        </div>
+        <br>
+        <br>
     </div>
-    <br>
-    <br>
-</div>
 {% endblock %}

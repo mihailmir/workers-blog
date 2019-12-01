@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm, authenticate
+from django.contrib.auth.forms import authenticate
 from django.contrib.auth import login, logout
 from .forms import SignUpForm
 from django.core.mail import send_mail
@@ -19,8 +19,8 @@ def signup(request):
             else:
                 user.workers.image = 'workers_list/photos/default_user.jpg'
             user.save()
-            send_mail('Регистрация', f'Здравствуйете {user.username} вы успешно зарегестрировались на сайте учета сотрудников.',
-                       'workerstestmail@gmail.com', [f'{user.workers.email}'], fail_silently=False)
+            # send_mail('Регистрация', f'Здравствуйете {user.username} вы успешно зарегестрировались на сайте учета сотрудников.',
+            #            'workerstestmail@gmail.com', [f'{user.workers.email}'], fail_silently=False)
             my_password = form.cleaned_data.get('password1')
             user = authenticate(username=user.username, password=my_password)
             login(request, user)

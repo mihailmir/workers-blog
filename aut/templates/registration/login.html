@@ -1,35 +1,30 @@
 {% extends 'base.html' %}
 
-{% block login %}
-
-<h2 class="text-head">Вход</h2>>
-<div class="container">
-    <div class="row justify-content-center align-items-center">
-        <div class="card text-white bg-dark col-lg-6">
-            <form method="post">
-
-                <div class="form-group">
-                    {% csrf_token %}
-                    <label>Login</label>
-                    <input type="text" class="form-control" placeholder="Логин" name="username" id="id_username">
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control" placeholder="Пароль" name="password" id="id_password">
-
-                </div>
-                <p>
-                    <button type="submit" class="btn btn-secondary">Войти</button>
-                </p>
-
-            </form>
-            {% if form.errors %}
-            <p>Введены не верные данные, оба поля чуствительны к регистру.</p>
-            {% endif %}
-            <a href="{% url 'signup' %}">Не зарегестрированы?</a>
+{% block content %}
+    <h2 class="text-head">Вход</h2>>
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="card text-white bg-dark col-lg-6">
+                <form method="post">
+                    <div class="form-group">
+                        {% csrf_token %}
+                        <label>Login</label>
+                        <input type="text" class="form-control" placeholder="Логин" name="username" id="id_username">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" placeholder="Пароль" name="password" id="id_password">
+                    </div>
+                    <p>
+                        <button type="submit" class="btn btn-secondary">Войти</button>
+                    </p>
+                </form>
+                {% if form.errors %}
+                    <p>Введены не верные данные, оба поля чуствительны к регистру.</p>
+                {% endif %}
+                <a href="{% url 'signup' %}">Не зарегестрированы?</a>
+            </div>
         </div>
     </div>
-</div>
-
 
 {% endblock %}

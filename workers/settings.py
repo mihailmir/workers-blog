@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'workers_list',
     'aut',
     'news',
@@ -49,6 +50,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -82,11 +84,11 @@ WSGI_APPLICATION = 'workers.wsgi.application'
 DATABASES = {
      'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django_db',
-        'USER' : 'postgres',
-        'PASSWORD' : 'admin',
-        'HOST' : '127.0.0.1',
-        'PORT' : '5432',
+        'NAME': 'workers',
+        'USER': '***',
+        'PASSWORD': '***',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
@@ -141,8 +143,10 @@ STATICFILES_DIRS = [
 
 LOGIN_REDIRECT_URL = '/workers'
 
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = '***'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "workerstestmail@gmail.com"
-EMAIL_HOST_PASSWORD = "12345123412312"
+EMAIL_HOST_USER = "***"
+EMAIL_HOST_PASSWORD = "***"
 EMAIL_USE_TLS = True
+
+INTERNAL_IPS = ('127.0.0.1',)

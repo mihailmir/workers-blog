@@ -1,29 +1,27 @@
 {% extends 'base.html' %}
-
-{% block news %}
-{%block title%}
-<title>Новости</title>
-{% endblock title%}
-<h2 class="text-head">
-    Новости компании
-</h2>
-<br>
-<br>
-<div class="container">
-    <div class="row ">
-        <div class="card text-white bg-dark mb-3 ml-1 col-12">
-            {%for field in news %}
-            <div class="card-header"><p><img src="{{ MEDIA_URL }}{{field.image}} " width="205" height="205"></p>
+{% block title %}
+    <title>Новости</title>
+{% endblock title %}
+{% block content %}
+    <h2 class="text-head">
+        Новости компании
+    </h2>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row ">
+            <div class="card text-white bg-dark mb-3 ml-1 col-12">
+                {% for field in news %}
+                <div class="card-header"><p><img src="{{ MEDIA_URL }}{{field.image}} " width="205" height="205"></p>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"><p>{{field.text}}</p></h5>
+                    <p>{{ field.date }}</p>
+                </div>
+                {% endfor %}
             </div>
-            <div class="card-body">
-                <h5 class="card-title"><p>{{field.text}}</p></h5>
-                <p>{{field.date}}</p>
-            </div>
-            {%endfor%}
-
         </div>
+        <br>
+        <br>
     </div>
-    <br>
-    <br>
-</div>
 {% endblock %}

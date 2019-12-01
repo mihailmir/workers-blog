@@ -1,34 +1,32 @@
 {% extends 'base.html' %}
-{%block edit_profile%}
-{%block title%}
-<title>Личный кабинет</title>
-{% endblock title%}
-<h3 class="text-head">
-    Личный кабинет
-</h3>
-<div class="container">
-    <div class="row">
-        <div class="col-md-4 offset-md-4">
-            <br>
-            <br>
-            <div class="card text-white bg-dark mb-3">
-                <div class="card-header"><p><img src="{{ MEDIA_URL }}{{profile.image}} " width="150" height="150"></p>
-                </div>
-                <div class="card-body">
-                    <form method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        {%for field in form %}
-                        <p>{{field}}</p>
-                        {%endfor%}
-                        <p>
-                            <button type="submit" class="btn btn-secondary">Сохранить</button>
-                        </p>
-                    </form>
+{% block title %}
+    <title>Личный кабинет</title>
+{% endblock title %}
+{% block content %}
+    <h3 class="text-head">
+        Личный кабинет
+    </h3>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <br>
+                <br>
+                <div class="card text-white bg-dark mb-3">
+                    <div class="card-header"><p><img src="{{ MEDIA_URL }}{{profile.image}} " width="150" height="150"></p>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% for field in form %}
+                            <p>{{ field }}</p>
+                            {% endfor %}
+                            <p>
+                                <button type="submit" class="btn btn-secondary">Сохранить</button>
+                            </p>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-
-{%endblock%}
+{% endblock %}
