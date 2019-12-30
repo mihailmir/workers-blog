@@ -85,8 +85,8 @@ DATABASES = {
      'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'workers',
-        'USER': '***',
-        'PASSWORD': '***',
+        'USER': '****',
+        'PASSWORD': '****',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -141,7 +141,7 @@ STATICFILES_DIRS = [
     STATICFILES_DIR,
 ]
 
-LOGIN_REDIRECT_URL = '/workers'
+LOGIN_REDIRECT_URL = '/workers/page/1'
 
 EMAIL_HOST = '***'
 EMAIL_PORT = 587
