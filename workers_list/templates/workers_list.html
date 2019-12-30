@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load subtract %}
 
 {% block title %}
     <title>Список работников</title>
@@ -12,31 +13,60 @@
     <br>
     <div class="container">
         <div class="row ">
-            <div class="row justify-content-around ">
-                {% for field in work %}
-                    <div class="card text-white bg-dark mb-3 ml-1 col-3" >
-                        <div class="card-header">
-                            <p>
-                                <img src="{{ MEDIA_URL }}{{field.image}} " width="100" height="100">
-                            </p>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <p>{{ field.name }} {{ field.surname }}</p>
-                            </h5>
-                            <p>{{ field.email }}</p>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                card's content.
-                            </p>
-                            <p>
-                                <a href="{% url 'id' field.user_id %}" class="btn btn-secondary" role="button">Редактировать</a>
-                            </p>
-                        </div>
+            {% for field in work %}
+                <div class="col-md-3 ml-5 mb-5 card text-white bg-dark" >
+                    <div class="card-header">
+                        <p>
+                            <img src="{{ MEDIA_URL }}{{field.image}} " width="100" height="100">
+                        </p>
                     </div>
-                {% endfor %}
-            </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <p>{{ field.name }} {{ field.surname }}</p>
+                        </h5>
+                        <p>{{ field.email }}</p>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                            card's content.
+                        </p>
+                        <p>
+                            <a href="{% url 'profile' field.user_id %}" class="btn btn-secondary" role="button">Редактировать</a>
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
         <br>
         <br>
     </div>
+    {% if is_paginated %}
+        <nav class="navbar navbar-bottom navbar-default">
+            <ul class="pagination">
+                <li class="page-item {% if not page_obj.has_previous %} disabled {% endif %}">
+                    <a class="page-link" href="{% url 'workers' page_obj.number|subtract:1 %}">
+                        Previous
+                    </a>
+                </li>
+                {% if page_obj.number|subtract:nav_range > 1 %}
+                    <li class="page-item"><a class="page-link" href="{% url 'workers' 1 %}">1</a></li>
+                    <li class="page-item disabled"><a class="page-link">...</a></li>
+                {% endif %}
+                {% for num in paginator.page_range %}
+                    {% if num == page_obj.number %}
+                        <li class="page-item disabled"><a class="page-link">{{num}}</a></li>
+                    {% elif num  > page_obj.number|subtract:nav_range and num  < page_obj.number|add:nav_range %}
+                        <li class="page-item"><a class="page-link" href="{% url 'workers' num %}">{{num}}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if page_obj.number|add:3 < paginator.num_pages %}
+                    <li class="page-item disabled"><a class="page-link">...</a></li>
+                    <li class="page-item"><a class="page-link" href="{% url 'workers' paginator.num_pages %}">{{paginator.num_pages}}</a></li>
+                {% endif %}
+                <li class="page-item  {% if not page_obj.has_next %} disabled {% endif %}">
+                    <a class="page-link" href="{% url 'workers' page_obj.number|add:1 %}">
+                        Next
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    {% endif %}
 {% endblock %}

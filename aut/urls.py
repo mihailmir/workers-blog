@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib.auth.views import LoginView
 from django.urls import path
 from .views import signup, logout_view
+from .forms import CustomAuthenticationForm
 
 
 urlpatterns = [
     path('signup/', signup, name='signup'),
-    path('login/', LoginView.as_view(), name='login'),
+    path('login/', LoginView.as_view(authentication_form=CustomAuthenticationForm), name='login'),
     path('logout/', logout_view, name='logout')
 ]

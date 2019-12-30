@@ -24,7 +24,7 @@ def signup(request):
             my_password = form.cleaned_data.get('password1')
             user = authenticate(username=user.username, password=my_password)
             login(request, user)
-            return redirect('/workers')
+            return redirect('workers')
     else:
         form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form})
@@ -32,4 +32,4 @@ def signup(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('/login')
+    return redirect('login')
