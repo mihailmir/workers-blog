@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Workers
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, DetailView
 from .forms import Edit
 
@@ -23,6 +24,7 @@ class Profile(LoginRequiredMixin, DetailView):
 
 
 # FBV example
+@login_required(login_url='login')
 def edit_fp(request):
     page = Workers.objects.get(user_id=request.user.id)
     context = {'profile': page}
