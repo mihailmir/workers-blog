@@ -1,6 +1,0 @@
-.idea
-venv/
-*.sqlite3
-*.pyc
-*/__pychache__/
-__pychache__/
